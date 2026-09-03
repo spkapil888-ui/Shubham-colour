@@ -9,6 +9,8 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { ProductCard } from '../components/ProductCard';
+import { SEOHead } from '../components/SEOHead';
+import { getPageSEO } from '../utils/seoConfig';
 import { productsData } from '../data/productsData';
 import { companyData } from '../data/companyData';
 import { Brand, Product } from '../types';
@@ -35,8 +37,11 @@ export const BrandDetailPage: React.FC<BrandDetailPageProps> = ({
     window.open(`https://wa.me/${companyData.whatsappNumber}?text=${text}`, '_blank');
   };
 
+  const pageSEO = getPageSEO('brand-detail', { brand });
+
   return (
     <div className="max-w-[1540px] mx-auto px-4 sm:px-6 py-6 space-y-10 pb-20">
+      <SEOHead {...pageSEO} />
       {/* BREADCRUMB & BACK */}
       <div className="flex items-center justify-between text-xs text-[#777777]">
         <button

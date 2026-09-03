@@ -5,6 +5,8 @@ import {
   SlidersHorizontal 
 } from 'lucide-react';
 import { ProductCard } from '../components/ProductCard';
+import { SEOHead } from '../components/SEOHead';
+import { getPageSEO } from '../utils/seoConfig';
 import { productsData } from '../data/productsData';
 import { categoriesData } from '../data/categoriesData';
 import { brandsData } from '../data/brandsData';
@@ -75,8 +77,14 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
 
   const hasActiveFilters = selectedCategory !== 'all' || selectedBrand !== 'all' || selectedSurface !== 'all' || searchQuery !== '';
 
+  const pageSEO = getPageSEO('products', {
+    category: selectedCategory,
+    brandFilter: selectedBrand,
+  });
+
   return (
     <div className="max-w-[1540px] mx-auto px-4 sm:px-6 py-4 space-y-10 pb-20">
+      <SEOHead {...pageSEO} />
       {/* PAGE HEADER */}
       <div className="bg-white rounded-[40px] sm:rounded-[60px] p-8 sm:p-14 lg:p-20 shadow-[0_15px_45px_rgba(0,0,0,0.04)] border border-slate-100/80">
         <div className="max-w-4xl mx-auto text-center space-y-4">

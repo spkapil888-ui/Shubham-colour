@@ -8,6 +8,8 @@ import {
   Share2 
 } from 'lucide-react';
 import { ProductCard } from '../components/ProductCard';
+import { SEOHead } from '../components/SEOHead';
+import { getPageSEO } from '../utils/seoConfig';
 import { companyData } from '../data/companyData';
 import { productsData } from '../data/productsData';
 import { brandsData } from '../data/brandsData';
@@ -48,8 +50,11 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
     }
   };
 
+  const pageSEO = getPageSEO('product-detail', { product });
+
   return (
     <div className="max-w-[1540px] mx-auto px-4 sm:px-6 py-6 space-y-12 pb-20">
+      <SEOHead {...pageSEO} />
       {/* BREADCRUMB & BACK NAVIGATION */}
       <div className="flex items-center justify-between text-xs text-[#777777]">
         <button

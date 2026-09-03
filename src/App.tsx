@@ -23,6 +23,8 @@ import { Product, Brand, CategoryId } from './types';
 import { brandsData } from './data/brandsData';
 import { productsData } from './data/productsData';
 import { companyData } from './data/companyData';
+import { SEOHead } from './components/SEOHead';
+import { getPageSEO } from './utils/seoConfig';
 import { ShieldCheck, ArrowLeft, Sparkles, Scale, FileText, Lock } from 'lucide-react';
 
 export default function App() {
@@ -35,6 +37,14 @@ export default function App() {
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [enquiryInitialNote, setEnquiryInitialNote] = useState<string>('');
+
+  // Compute dynamic SEO metadata based on current active page/tab
+  const seoData = getPageSEO(activeTab, {
+    product: selectedProduct,
+    brand: selectedBrand,
+    category: selectedCategoryFilter,
+    brandFilter: selectedBrandFilter,
+  });
 
   // Scroll to top on tab changes
   useEffect(() => {
@@ -82,6 +92,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-100/60 text-slate-800 font-['Inter',sans-serif] selection:bg-purple-600 selection:text-white antialiased">
+      {/* DYNAMIC SEO HEAD FOR CURRENT PAGE */}
+      <SEOHead {...seoData} />
+
       {/* GLOBAL TOP NAVIGATION */}
       <Navbar
         activeTab={activeTab}

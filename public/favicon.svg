@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="sch-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="drop-primary" x1="15%" y1="10%" x2="85%" y2="90%">
+      <stop offset="0%" stop-color="#ff4081" />
+      <stop offset="45%" stop-color="#ef3479" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+    <linearGradient id="swirl-cyan" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <linearGradient id="accent-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fde047" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#ef3479" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- Background Rounded Canvas -->
+  <rect width="64" height="64" rx="15" fill="url(#sch-bg)" />
+  <rect width="62" height="62" x="1" y="1" rx="14" fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1" />
+
+  <!-- Outer Paint Droplet with Glow -->
+  <g filter="url(#glow)">
+    <path
+      d="M32 9 C32 9 47 24.5 47 37 C47 45.28 40.28 52 32 52 C23.72 52 17 45.28 17 37 C17 24.5 32 9 32 9 Z"
+      fill="url(#drop-primary)"
+    />
+  </g>
+
+  <!-- Dynamic Secondary Color Swirl (Representing Colour Mixing) -->
+  <path
+    d="M32 14 C32 14 42 26 42 36 C42 41.5 37.5 46 32 46 C27.5 46 23.5 42.5 24 37 C24.5 31.5 29 28 33 24 C36 21 34 16 32 14 Z"
+    fill="url(#swirl-cyan)"
+    opacity="0.9"
+  />
+
+  <!-- Radiant Inner Pigment Splash / Dot -->
+  <circle cx="32" cy="38" r="4.5" fill="url(#accent-gold)" />
+
+  <!-- Glossy Highlight Reflection -->
+  <path
+    d="M24 28 C22 32 22 36 24 39 C24.5 36 26 31 28 27 C26 26 24.5 27 24 28 Z"
+    fill="#ffffff"
+    opacity="0.45"
+  />
+  <ellipse cx="26" cy="22" rx="2" ry="3.5" transform="rotate(-25 26 22)" fill="#ffffff" opacity="0.6" />
+</svg>
