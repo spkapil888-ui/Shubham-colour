@@ -148,56 +148,56 @@ export const HomePage: React.FC<HomePageProps> = ({
       id: 'interior-paints',
       title: 'Interior Paints',
       desc: 'Transform your living spaces with premium finishes and vibrant shades.',
-      image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
+      image: '/images/categories/interior-paints.jpg',
       badge: 'Popular'
     },
     {
       id: 'exterior-paints',
       title: 'Exterior Paints',
       desc: 'Weather-resistant protection for your home against harsh climates.',
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+      image: '/images/categories/exterior-paints.jpg',
       badge: 'Weather Proof'
     },
     {
       id: 'wood-finishes',
       title: 'Wood & Metal',
       desc: 'Durable and elegant finishes for all wooden and metal surfaces.',
-      image: 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=800&q=80',
+      image: '/images/categories/wood-finishes.jpg',
       badge: 'Italian PU'
     },
     {
       id: 'waterproofing',
       title: 'Waterproofing',
       desc: 'Advanced solutions for leak-proof homes and long-lasting protection.',
-      image: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=800&q=80',
+      image: '/images/categories/waterproofing.jpg',
       badge: 'Zero Dampness'
     },
     {
       id: 'automotive-compounds',
       title: 'Automotive Paint',
       desc: 'High-performance coatings for vehicles and industrial applications.',
-      image: 'https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=800&q=80',
+      image: '/images/categories/automotive-paint.jpg',
       badge: '3M Auto'
     },
     {
       id: 'wall-care',
       title: 'Wall Care & Putty',
       desc: 'White cement putties, acrylic primers and surface levelers for flawless walls.',
-      image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80',
+      image: '/images/categories/wall-care.jpg',
       badge: 'Birla White & JK'
     },
     {
       id: 'construction-chemicals',
       title: 'Construction Chemicals',
       desc: 'SBR bonding latex, polymer modifiers, structural repair and tile fixing solutions.',
-      image: 'https://images.unsplash.com/photo-1541888946425-d0fbb180c5f7?auto=format&fit=crop&w=800&q=80',
+      image: '/images/categories/construction-chemicals.jpg',
       badge: 'Konkem & Pidilite'
     },
     {
       id: 'decorative-finishes',
       title: 'Texture Finishes',
       desc: 'Unique wall textures that create depth and a luxurious feel in any room.',
-      image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80',
+      image: '/images/categories/texture-finishes.jpg',
       badge: 'Artisan'
     }
   ];
