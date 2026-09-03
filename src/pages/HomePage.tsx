@@ -20,7 +20,6 @@ import {
   Layers,
   Wrench,
   Sparkle,
-  Building2,
   Users,
   Shield,
   HelpCircle,
@@ -205,12 +204,16 @@ export const HomePage: React.FC<HomePageProps> = ({
 
   // Institutional Partners Data
   const institutionalPartners = [
-    { name: 'Alwar Urban Development', type: 'Infrastructure & Civic' },
-    { name: 'Rajasthan Housing Board Projects', type: 'Residential Complexes' },
-    { name: 'Matsya Industrial Area Units', type: 'Industrial Facilities' },
-    { name: 'Sariska Heritage Resorts', type: 'Hospitality & Heritage' },
-    { name: 'Neemrana Infrastructure Corp', type: 'Commercial Architecture' },
-    { name: 'Hotel Burja Haveli', type: 'Luxury Restoration' }
+    { 
+      name: 'D-Mart Niti Khand 3 Indirapuram Ghaziabad', 
+      logo: '/images/partners/dmart-logo.png',
+      alt: 'D-Mart Niti Khand 3 Indirapuram Ghaziabad Logo'
+    },
+    { 
+      name: 'Apna Ghar', 
+      logo: '/images/partners/apna-ghar-logo.png',
+      alt: 'Apna Ghar Logo'
+    }
   ];
 
   return (
@@ -860,20 +863,22 @@ export const HomePage: React.FC<HomePageProps> = ({
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 pt-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 max-w-2xl mx-auto gap-6 sm:gap-8 pt-4 w-full">
           {institutionalPartners.map((partner, index) => (
             <div
               key={index}
-              className="p-5 rounded-2xl bg-[#fafafa] border border-slate-200/80 flex flex-col justify-center items-center text-center hover:border-[#7C3AED] hover:bg-white transition-all duration-300 shadow-sm group min-h-[120px]"
+              className="p-6 sm:p-8 rounded-2xl bg-[#fafafa] border border-slate-200/80 flex flex-col justify-center items-center text-center hover:border-[#7C3AED] hover:bg-white transition-all duration-300 shadow-sm group min-h-[140px]"
             >
-              <div className="w-9 h-9 rounded-xl bg-purple-50 text-[#7C3AED] flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform">
-                <Building2 className="w-4 h-4" />
+              <div className="h-16 w-full flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <img
+                  src={partner.logo}
+                  alt={partner.alt}
+                  className="max-w-[190px] max-h-[60px] w-auto h-auto object-contain object-center"
+                  loading="lazy"
+                />
               </div>
-              <div className="font-extrabold text-xs text-[#191919] leading-snug">
+              <div className="font-extrabold text-sm sm:text-base text-[#191919] leading-snug">
                 {partner.name}
-              </div>
-              <div className="text-[10px] text-[#888888] mt-1">
-                {partner.type}
               </div>
             </div>
           ))}
