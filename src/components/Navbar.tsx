@@ -152,35 +152,35 @@ export const Navbar: React.FC<NavbarProps> = ({
   const handleCategoryClick = (categoryId: string) => {
     if (onSelectCategory) {
       onSelectCategory(categoryId as CategoryId);
+    } else {
+      handleNavigate(`products/${categoryId}`);
     }
-    setActiveTab(`products/${categoryId}`);
     setOpenDropdown(null);
     setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleBrandClick = (slug: string) => {
     if (slug === 'all') {
-      setActiveTab('brands');
+      handleNavigate('brands');
     } else {
       if (onSelectBrand) {
         onSelectBrand(slug);
+      } else {
+        handleNavigate(`brands/${slug}`);
       }
-      setActiveTab(`brands/${slug}`);
     }
     setOpenDropdown(null);
     setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleConcernClick = (slug: string) => {
     if (onSelectConcern) {
       onSelectConcern(slug);
+    } else {
+      handleNavigate(`concerns/${slug}`);
     }
-    setActiveTab(`concerns/${slug}`);
     setOpenDropdown(null);
     setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (

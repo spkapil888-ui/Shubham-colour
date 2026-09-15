@@ -253,13 +253,27 @@ export default function App() {
         )}
 
         {/* SINGLE PRODUCT DETAIL */}
-        {activeTab === 'product-detail' && selectedProduct && (
-          <ProductDetailPage
-            product={selectedProduct}
-            onBack={() => handleNavigate('products')}
-            onSelectProduct={handleSelectProduct}
-            onOpenEnquiry={(prodName) => handleOpenEnquiry(prodName ? `Inquiry regarding: ${prodName}` : undefined)}
-          />
+        {(activeTab === 'product-detail' || activeTab.startsWith('product/')) && (
+          (() => {
+            const slug = activeTab.startsWith('product/') ? activeTab.replace('product/', '') : selectedProduct?.slug;
+            const currentProd = (slug ? productsData.find(p => p.slug === slug) : null) || selectedProduct;
+            if (!currentProd) return (
+              <ProductsPage
+                initialCategory={selectedCategoryFilter}
+                initialBrand={selectedBrandFilter}
+                onSelectProduct={handleSelectProduct}
+                onOpenEnquiry={(prodName) => handleOpenEnquiry(prodName ? `Inquiry regarding: ${prodName}` : undefined)}
+              />
+            );
+            return (
+              <ProductDetailPage
+                product={currentProd}
+                onBack={() => handleNavigate('products')}
+                onSelectProduct={handleSelectProduct}
+                onOpenEnquiry={(prodName) => handleOpenEnquiry(prodName ? `Inquiry regarding: ${prodName}` : undefined)}
+              />
+            );
+          })()
         )}
 
         {/* ALL BRANDS DIRECTORY */}
@@ -271,19 +285,31 @@ export default function App() {
         )}
 
         {/* DEDICATED BRAND DETAIL PAGE */}
-        {(activeTab === 'brand-detail' || activeTab.startsWith('brands/')) && selectedBrand && (
-          <BrandDetailPage
-            brand={selectedBrand}
-            onBack={() => handleNavigate('brands')}
-            onSelectProduct={handleSelectProduct}
-            onOpenEnquiry={(brandName) => handleOpenEnquiry(brandName ? `Quote for: ${brandName}` : undefined)}
-          />
+        {(activeTab === 'brand-detail' || activeTab.startsWith('brands/')) && (
+          (() => {
+            const slug = activeTab.startsWith('brands/') ? activeTab.replace('brands/', '') : selectedBrand?.slug;
+            const currentBrand = (slug ? brandsData.find(b => b.slug === slug) : null) || selectedBrand;
+            if (!currentBrand) return (
+              <BrandsPage
+                onSelectBrand={handleSelectBrand}
+                onOpenEnquiry={(brandName) => handleOpenEnquiry(brandName ? `Quote for: ${brandName}` : undefined)}
+              />
+            );
+            return (
+              <BrandDetailPage
+                brand={currentBrand}
+                onBack={() => handleNavigate('brands')}
+                onSelectProduct={handleSelectProduct}
+                onOpenEnquiry={(brandName) => handleOpenEnquiry(brandName ? `Quote for: ${brandName}` : undefined)}
+              />
+            );
+          })()
         )}
 
         {/* SHOP BY CONCERN DIRECTORY & DETAIL */}
         {(activeTab === 'shop-by-concern' || activeTab.startsWith('concerns')) && (
           <ConcernsPage
-            initialConcernSlug={selectedConcernSlug}
+            initialConcernSlug={selectedConcernSlug || (activeTab.startsWith('concerns/') ? activeTab.replace('concerns/', '') : null)}
             onSelectCategory={handleSelectCategory}
             onSelectProductBySlug={(slug) => {
               const p = productsData.find(prod => prod.slug === slug);
@@ -322,9 +348,9 @@ export default function App() {
         )}
 
         {/* INDIVIDUAL BLOG POST DETAIL */}
-        {activeTab.startsWith('blogs/') && selectedBlogSlug && (
+        {activeTab.startsWith('blogs/') && (
           <BlogDetailPage
-            slug={selectedBlogSlug}
+            slug={selectedBlogSlug || activeTab.replace('blogs/', '')}
             onSelectBlog={handleSelectBlog}
             onSelectCategory={handleSelectCategory}
             onSelectBrand={handleSelectBrand}
