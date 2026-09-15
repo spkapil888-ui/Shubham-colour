@@ -196,15 +196,98 @@ export function getPageSEO(
         ogType: 'website',
       };
 
+    case 'painting-services-in-alwar':
     case 'services':
       return {
-        title: 'Painting Services, Moisture Testing & On-Site Consultation | Shubham Colour House Alwar',
+        title: 'Professional House & Commercial Painting Services in Alwar | Shubham Colour House',
         description:
-          'Comprehensive painting services in Alwar: complimentary on-site moisture meter diagnosis, automated square-foot paint estimation, verified contractor referrals, and prompt site delivery.',
+          'Expert house painting services in Alwar: interior & exterior painting, flat repainting, villa luxury finishes, dust-free mechanized sanding, and laser area measurements by certified painters.',
         keywords:
-          'painters in Alwar, wall moisture test Alwar, house painting services, paint estimation Alwar, paint contractor Alwar, site delivery paints',
-        canonicalUrl: `${BASE_URL}/#services`,
+          'painting services in Alwar, house painting services in Alwar, home painting services in Alwar, professional painters in Alwar, house painter in Alwar, paint contractor in Alwar, painters near me, interior painting Alwar, exterior painting Alwar, flat painting Alwar',
+        canonicalUrl: `${BASE_URL}/painting-services-in-alwar`,
         ogType: 'website',
+        jsonLd: {
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          serviceType: 'House Painting Services',
+          provider: {
+            '@type': 'HomeAndConstructionBusiness',
+            name: 'Shubham Colour House',
+            telephone: companyData.phonePrimary,
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: 'Plot No. 43, Vijay Complex, Scheme No. 2',
+              addressLocality: 'Alwar',
+              addressRegion: 'Rajasthan',
+              postalCode: '301001',
+              addressCountry: 'IN'
+            }
+          },
+          areaServed: ['Alwar', 'Scheme No. 1', 'Scheme No. 2', 'MIA Alwar', 'Bhiwadi', 'Neemrana'],
+          hasOfferCatalog: {
+            '@type': 'OfferCatalog',
+            name: 'Painting Services Catalog',
+            itemListElement: [
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Interior Painting' } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Exterior Weatherproof Painting' } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Villa & Italian PU Wood Polish' } }
+            ]
+          }
+        }
+      };
+
+    case 'waterproofing-services-in-alwar':
+      return {
+        title: 'Terrace, Roof & Bathroom Waterproofing Services in Alwar | Shubham Colour House',
+        description:
+          'Permanent waterproofing services in Alwar: terrace leakage repair, roof ponding sealing, bathroom tile waterproofing without demolition, and wall shora (efflorescence) treatment.',
+        keywords:
+          'waterproofing services in Alwar, waterproofing contractor in Alwar, waterproofing company in Alwar, terrace waterproofing in Alwar, roof waterproofing in Alwar, bathroom waterproofing in Alwar, wall waterproofing in Alwar, roof leakage repair Alwar, terrace leakage solution Alwar, bathroom leakage solution Alwar, waterproof paint in Alwar, waterproofing products in Alwar, Konkem Alwar, Dr Fixit Alwar, SmartCare Alwar',
+        canonicalUrl: `${BASE_URL}/waterproofing-services-in-alwar`,
+        ogType: 'website',
+        jsonLd: {
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          serviceType: 'Waterproofing Services',
+          provider: {
+            '@type': 'HomeAndConstructionBusiness',
+            name: 'Shubham Colour House',
+            telephone: companyData.phonePrimary,
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: 'Plot No. 43, Vijay Complex, Scheme No. 2',
+              addressLocality: 'Alwar',
+              addressRegion: 'Rajasthan',
+              postalCode: '301001',
+              addressCountry: 'IN'
+            }
+          },
+          areaServed: 'Alwar District'
+        }
+      };
+
+    case 'shop-by-concern':
+    case 'concerns':
+      return {
+        title: 'Shop By Concern: Diagnose & Solve Wall, Terrace & Moisture Problems | Alwar',
+        description:
+          'Targeted painting and waterproofing solutions for interior walls, exterior weather protection, terrace leakage, bathroom dampness, metal rust, wood finishing, and repainting in Alwar.',
+        keywords:
+          'terrace leakage Alwar, wall dampness cure Alwar, shora treatment Alwar, paint peeling solution, bathroom waterproofing Alwar, rust protection metal paint, wood finishing Alwar',
+        canonicalUrl: `${BASE_URL}/shop-by-concern`,
+        ogType: 'website',
+      };
+
+    case 'blogs':
+    case 'colour-inspiration':
+      return {
+        title: 'Painting Guides, Waterproofing Tips & Costing Advice | Shubham Colour House Alwar',
+        description:
+          'Read expert guides on house painting costs in Alwar, terrace waterproofing remedies, Rajasthan climate paint selection, Birla putty application, and brand comparisons.',
+        keywords:
+          'painting cost per sq ft Alwar, terrace waterproofing guide, Asian Paints vs Berger Paints, house painting tips Alwar, how to fix wall dampness, paint advice Rajasthan',
+        canonicalUrl: `${BASE_URL}/blogs`,
+        ogType: 'article',
       };
 
     case 'projects':

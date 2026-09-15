@@ -284,10 +284,12 @@ export const Footer: React.FC<FooterProps> = ({
                 { id: 'home', label: 'Home' },
                 { id: 'about', label: 'About Us' },
                 { id: 'products', label: 'Our Products' },
+                { id: 'brands', label: 'Shop By Brand' },
+                { id: 'shop-by-concern', label: 'Shop By Concern' },
+                { id: 'painting-services-in-alwar', label: 'Painting Services in Alwar' },
+                { id: 'waterproofing-services-in-alwar', label: 'Waterproofing in Alwar' },
                 { id: 'calculator', label: 'Paint Calculator', action: () => onOpenCalculator() },
-                { id: 'brands', label: 'Authorized Brands' },
-                { id: 'services', label: 'Need a Painter?' },
-                { id: 'colour-inspiration', label: 'Blogs & Inspiration' },
+                { id: 'blogs', label: 'Painting Guides & Blogs' },
                 { id: 'contact', label: 'Contact Showroom' }
               ].map((item) => (
                 <li key={item.id}>

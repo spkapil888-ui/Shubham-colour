@@ -72,12 +72,13 @@ export const BrandDetailPage: React.FC<BrandDetailPageProps> = ({
 
         <div className="relative z-10 max-w-3xl space-y-4">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="px-3 py-1 rounded-full text-xs font-extrabold bg-[#ef3479] text-white shadow">
-              Authorized Partner
-            </span>
-            {brand.specialBadge && (
-              <span className="px-3 py-1 rounded-full text-xs font-extrabold bg-[#ff761c] text-white shadow">
+            {brand.specialBadge ? (
+              <span className="px-3 py-1 rounded-full text-xs font-extrabold bg-[#ef3479] text-white shadow">
                 {brand.specialBadge}
+              </span>
+            ) : (
+              <span className="px-3 py-1 rounded-full text-xs font-extrabold bg-slate-800 text-white shadow">
+                Genuine Stockist in Alwar
               </span>
             )}
             {brand.foundedOrOrigin && (

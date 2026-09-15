@@ -701,5 +701,113 @@ export const productsData: Product[] = [
     coverageApprox: 'Approx. 14-16 sq.ft / kg for 2 coats (total thickness 1.5mm).',
     sheenOrTexture: 'Smooth Velvety White Matt Base',
     isFeatured: true
+  },
+
+  // --- NEROLAC PAINTS ---
+  {
+    id: 'nerolac-impressions-hd',
+    slug: 'nerolac-impressions-hd',
+    name: 'Kansai Nerolac Impressions HD Luxury Emulsion',
+    brandSlug: 'nerolac',
+    brandName: 'Kansai Nerolac Paints',
+    categoryId: 'interior-paints',
+    categoryName: 'Interior Paints',
+    surfaceIds: ['walls'],
+    applicationArea: 'Interior',
+    shortBenefit: 'Micro-gel technology delivers ultra-rich colour depth, stain resistance, and high-definition silky sheen.',
+    description: 'Nerolac Impressions HD is Kansai Nerolac’s flagship luxury interior emulsion. Powered by Micro-Gel technology, it imparts an unmistakable high-definition finish with rich color payoff and superior washability for elegant indoor living spaces.',
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
+    idealFor: ['Luxury living rooms & master suites', 'High-traffic feature walls', 'Homes desiring vibrant colour depth'],
+    keyBenefits: [
+      'Micro-Gel technology for high-definition color brilliance',
+      'Ultra-smooth silken glow with excellent washability',
+      'Low VOC and low odor formulation for healthy air'
+    ],
+    applications: ['Interior Walls', 'Ceilings'],
+    surfaceCompatibility: ['Plastered Walls', 'Gypsum Boards', 'Asbestos Slabs'],
+    availablePackSizes: ['1 Litre', '4 Litres', '10 Litres', '20 Litres'],
+    coverageApprox: 'Approx. 140-160 sq.ft / litre for 2 coats.',
+    sheenOrTexture: 'Silky HD Sheen',
+    isFeatured: true
+  },
+  {
+    id: 'nerolac-excel-mica-marble',
+    slug: 'nerolac-excel-mica-marble',
+    name: 'Kansai Nerolac Excel Mica Marble Exterior Emulsion',
+    brandSlug: 'nerolac',
+    brandName: 'Kansai Nerolac Paints',
+    categoryId: 'exterior-paints',
+    categoryName: 'Exterior Paints',
+    surfaceIds: ['exterior-walls'],
+    applicationArea: 'Exterior',
+    shortBenefit: 'Infused with natural mica and marble particles for extreme heat reflection and crack-bridging defense.',
+    description: 'Nerolac Excel Mica Marble is an advanced exterior paint formulated with natural mica flakes and pulverized marble chips. It creates a robust, reflective shield that withstands intense North Indian heat, bridges hairline plaster cracks, and resists algae growth.',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+    idealFor: ['Hot climate facades & villas', 'Monsoon-facing exterior elevations', 'Boundary walls and bungalows'],
+    keyBenefits: [
+      'Natural Mica & Marble infusion for thermal insulation',
+      'Elastomeric crack-bridging flexibility',
+      'Anti-algal and anti-fungal bio-barrier'
+    ],
+    applications: ['Exterior Masonry', 'Concrete Facades'],
+    surfaceCompatibility: ['Cement Plaster', 'RCC Slabs'],
+    availablePackSizes: ['1 Litre', '4 Litres', '10 Litres', '20 Litres'],
+    coverageApprox: 'Approx. 50-60 sq.ft / litre for 2 coats.',
+    sheenOrTexture: 'Lustrous Marble-Smooth Exterior Finish',
+    isFeatured: true
+  },
+
+  // --- METAL & WOOD ENAMELS ---
+  {
+    id: 'british-paints-shungloss',
+    slug: 'british-paints-shungloss',
+    name: 'British Paints Shungloss Synthetic High-Gloss Enamel',
+    brandSlug: 'british-paints',
+    brandName: 'British Paints',
+    categoryId: 'protective-coatings',
+    categoryName: 'Protective Coatings',
+    surfaceIds: ['metal', 'wood'],
+    applicationArea: 'Both',
+    shortBenefit: 'High-gloss solvent-based enamel providing mirror shine and rust-resistance for metal grills and wood.',
+    description: 'British Paints Shungloss is a premier synthetic enamel engineered for both metal fabrication and wooden joinery. It delivers a hard, glossy, scratch-resistant film that protects gates, grills, railings, and doors against moisture, rust, and sunlight.',
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
+    idealFor: ['Main entrance gates and iron safety doors', 'Balcony railings and window grills', 'Wooden window frames and trim'],
+    keyBenefits: [
+      'Mirror-like high gloss retention',
+      'Tough anti-rust barrier when paired with red oxide primer',
+      'Smooth brushability without drag marks'
+    ],
+    applications: ['Iron Gates & Railings', 'Window Grills', 'Wooden Doors & Trim'],
+    surfaceCompatibility: ['Mild Steel', 'Wrought Iron', 'Solid Wood'],
+    availablePackSizes: ['500 ml', '1 Litre', '4 Litres', '20 Litres'],
+    coverageApprox: 'Approx. 90-110 sq.ft / litre for 2 coats.',
+    sheenOrTexture: 'Mirror High Gloss',
+    isFeatured: false
+  },
+  {
+    id: 'wembley-super-gloss-enamel',
+    slug: 'wembley-super-gloss-enamel',
+    name: 'Wembley Super Gloss Synthetic Enamel',
+    brandSlug: 'wembley-paints',
+    brandName: 'Wembley Paints',
+    categoryId: 'protective-coatings',
+    categoryName: 'Protective Coatings',
+    surfaceIds: ['metal', 'wood'],
+    applicationArea: 'Both',
+    shortBenefit: 'Economic high-gloss solvent enamel for agricultural implements, metal sheets, and architectural steel.',
+    description: 'Wembley Super Gloss Enamel provides dependable protection and vibrant colour retention on iron grills, gates, machinery, and wooden surfaces at an accessible price point.',
+    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
+    idealFor: ['Boundary grills and farm gates', 'Metal sheds and pipes', 'Everyday wood and metal touch-ups'],
+    keyBenefits: [
+      'Reliable gloss and colour retention',
+      'Good moisture and rain resistance',
+      'Fast surface drying'
+    ],
+    applications: ['Exterior Metal Grills', 'Gates', 'Wooden Panels'],
+    surfaceCompatibility: ['Ferrous Metal', 'Wood'],
+    availablePackSizes: ['500 ml', '1 Litre', '4 Litres', '20 Litres'],
+    coverageApprox: 'Approx. 85-100 sq.ft / litre for 2 coats.',
+    sheenOrTexture: 'High Gloss Enamel',
+    isFeatured: false
   }
 ];
