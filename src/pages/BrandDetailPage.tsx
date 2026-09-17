@@ -29,6 +29,18 @@ export const BrandDetailPage: React.FC<BrandDetailPageProps> = ({
   onOpenEnquiry
 }) => {
   const [logoError, setLogoError] = useState(false);
+
+  if (!brand) {
+    return (
+      <div className="max-w-[1540px] mx-auto px-4 sm:px-6 py-16 text-center space-y-4">
+        <p className="text-sm font-bold text-slate-700">Brand details not available</p>
+        <button onClick={onBack} className="btn-primary text-xs px-6 py-2.5">
+          Back to All Brands
+        </button>
+      </div>
+    );
+  }
+
   const brandProducts = productsData.filter((p) => p.brandSlug === brand.slug);
 
   const handleWhatsAppEnquire = () => {
@@ -139,7 +151,7 @@ export const BrandDetailPage: React.FC<BrandDetailPageProps> = ({
               Why Choose {brand.name}?
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {brand.whyChoose.map((reason, idx) => (
+              {(brand.whyChoose || []).map((reason, idx) => (
                 <div key={idx} className="flex items-start gap-2.5 text-xs text-[#333] font-bold">
                   <Check className="w-4 h-4 text-[#ef3479] flex-shrink-0 mt-0.5" aria-hidden="true" />
                   <span>{reason}</span>

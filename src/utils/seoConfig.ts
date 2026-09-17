@@ -2,6 +2,7 @@ import { Product, Brand, CategoryId } from '../types';
 import { categoriesData } from '../data/categoriesData';
 import { companyData } from '../data/companyData';
 import { SEOProps } from '../components/SEOHead';
+import { findBrand } from './brandUtils';
 
 const BASE_URL = 'https://shubhamcolourhouse.com';
 
@@ -14,7 +15,19 @@ export function getPageSEO(
     brandFilter?: string | 'all';
   }
 ): SEOProps {
-  switch (activeTab) {
+  // Normalize brand subroutes
+  let tab = activeTab;
+  let resolvedBrand = options?.brand;
+
+  if (tab.startsWith('brands/') || tab.startsWith('brand/')) {
+    const slug = tab.replace(/^(brands|brand)\//, '');
+    if (!resolvedBrand && slug) {
+      resolvedBrand = findBrand(slug) || null;
+    }
+    tab = 'brand-detail';
+  }
+
+  switch (tab) {
     case 'home':
       return {
         title: 'Shubham Colour House | Premium Paints, Waterproofing & Surface Solutions in Alwar',
@@ -151,18 +164,18 @@ export function getPageSEO(
           'Authorized dealership and stockist for Asian Paints, Berger, Nerolac, Soldier Paints, Konkem, MYK Laticrete, ICA Pidilite, 3M, Jivanjor & Birla White in Alwar. 100% factory-sealed original stock.',
         keywords:
           'authorized paint dealer Alwar, Asian Paints distributor Alwar, Berger paints dealer, Nerolac stockist, Soldier paints Alwar, Konkem distributor, MYK Laticrete dealer Alwar',
-        canonicalUrl: `${BASE_URL}/#brands`,
+        canonicalUrl: `${BASE_URL}/brands`,
         ogType: 'website',
       };
 
     case 'brand-detail': {
-      const brand = options?.brand;
+      const brand = resolvedBrand || options?.brand;
       if (brand) {
         return {
           title: `${brand.name} Authorized Dealer & Stockist in Alwar | Shubham Colour House`,
           description: `Official authorized dealer of ${brand.name} in Alwar. ${brand.tagline}. ${brand.description.slice(0, 140)}... Genuine stock, manufacturer warranties, and computerized tinting.`,
           keywords: `${brand.name} Alwar, ${brand.name} authorized dealer, buy ${brand.name} in Alwar, ${brand.name} price list, ${brand.name} stockist Vijay Complex Alwar`,
-          canonicalUrl: `${BASE_URL}/#brand/${brand.slug}`,
+          canonicalUrl: `${BASE_URL}/brands/${brand.slug}`,
           ogType: 'website',
           ogImage: brand.bannerImage || brand.logo,
         };
@@ -170,7 +183,7 @@ export function getPageSEO(
       return {
         title: 'Authorized Brand | Shubham Colour House Alwar',
         description: 'Authorized paint and surface chemical brand partner at Shubham Colour House Alwar.',
-        canonicalUrl: `${BASE_URL}/#brands`,
+        canonicalUrl: `${BASE_URL}/brands`,
       };
     }
 

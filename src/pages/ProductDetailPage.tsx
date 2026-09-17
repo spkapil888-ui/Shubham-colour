@@ -20,13 +20,15 @@ interface ProductDetailPageProps {
   onBack: () => void;
   onSelectProduct: (product: Product) => void;
   onOpenEnquiry: (productName?: string) => void;
+  onSelectBrand?: (brandSlug: string) => void;
 }
 
 export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   product,
   onBack,
   onSelectProduct,
-  onOpenEnquiry
+  onOpenEnquiry,
+  onSelectBrand
 }) => {
   const brand = brandsData.find(b => b.slug === product.brandSlug);
 
@@ -72,7 +74,16 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
           <span>/</span>
           <span>{product.categoryName}</span>
           <span>/</span>
-          <span className="text-[#191919] font-bold">{product.brandName}</span>
+          {onSelectBrand ? (
+            <button
+              onClick={() => onSelectBrand(product.brandSlug)}
+              className="text-[#191919] font-bold hover:text-[#ef3479] transition-colors cursor-pointer"
+            >
+              {product.brandName}
+            </button>
+          ) : (
+            <span className="text-[#191919] font-bold">{product.brandName}</span>
+          )}
         </div>
       </div>
 
@@ -88,9 +99,19 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
             />
             {/* Top brand badge */}
             <div className="absolute top-4 left-4 z-10 flex gap-2">
-              <span className="px-3 py-1 rounded-full text-xs font-extrabold bg-black/85 backdrop-blur-md text-white shadow">
-                {product.brandName}
-              </span>
+              {onSelectBrand ? (
+                <button
+                  onClick={() => onSelectBrand(product.brandSlug)}
+                  className="px-3 py-1 rounded-full text-xs font-extrabold bg-black/85 hover:bg-[#ef3479] transition-colors backdrop-blur-md text-white shadow cursor-pointer"
+                  title={`View all ${product.brandName} products`}
+                >
+                  {product.brandName}
+                </button>
+              ) : (
+                <span className="px-3 py-1 rounded-full text-xs font-extrabold bg-black/85 backdrop-blur-md text-white shadow">
+                  {product.brandName}
+                </span>
+              )}
             </div>
 
             <button
@@ -131,9 +152,18 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 {product.categoryName}
               </span>
               <span className="text-xs text-[#a1a1a1]">•</span>
-              <span className="text-xs font-extrabold text-[#191919]">
-                Brand: {product.brandName}
-              </span>
+              {onSelectBrand ? (
+                <button
+                  onClick={() => onSelectBrand(product.brandSlug)}
+                  className="text-xs font-extrabold text-[#191919] hover:text-[#ef3479] transition-colors cursor-pointer"
+                >
+                  Brand: {product.brandName} →
+                </button>
+              ) : (
+                <span className="text-xs font-extrabold text-[#191919]">
+                  Brand: {product.brandName}
+                </span>
+              )}
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#191919] tracking-tight">

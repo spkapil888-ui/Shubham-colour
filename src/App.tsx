@@ -32,6 +32,9 @@ import { productsData } from './data/productsData';
 import { companyData } from './data/companyData';
 import { SEOHead } from './components/SEOHead';
 import { getPageSEO } from './utils/seoConfig';
+import { findBrand } from './utils/brandUtils';
+import { BrandNotFoundView } from './components/BrandNotFoundView';
+import { NotFoundPage } from './pages/NotFoundPage';
 import { ShieldCheck, ArrowLeft, Sparkles, Scale, FileText, Lock } from 'lucide-react';
 
 export default function App() {
@@ -50,8 +53,35 @@ export default function App() {
   // 1. Initial URL routing and popstate listener
   useEffect(() => {
     const parseUrl = () => {
-      const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
-      const segments = path.split('/');
+      let path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+
+      // Check hash if path is empty or index.html (supports single-page hash routing #/brands/asian-paints)
+      if (!path || path === 'index.html') {
+        if (window.location.hash) {
+          path = window.location.hash.replace(/^#\/?/, '').replace(/^\/+|\/+$/g, '');
+        }
+      }
+
+      // Handle query parameters if present (e.g. /#products?brand=asian-paints)
+      let queryStr = window.location.search;
+      const qIndex = path.indexOf('?');
+      if (qIndex !== -1) {
+        queryStr = path.substring(qIndex);
+        path = path.substring(0, qIndex);
+      }
+
+      const urlParams = new URLSearchParams(queryStr);
+      const brandParam = urlParams.get('brand') || urlParams.get('brandSlug');
+      if (brandParam) {
+        const br = findBrand(brandParam);
+        if (br) {
+          setSelectedBrand(br);
+          setActiveTab('brand-detail');
+          return;
+        }
+      }
+
+      const segments = path ? path.split('/') : [];
 
       if (!path || path === 'home') {
         setActiveTab('home');
@@ -71,15 +101,18 @@ export default function App() {
         } else {
           setActiveTab('products');
         }
-      } else if (path === 'brands' || path === 'shop-by-brand') {
+      } else if (path === 'brands' || path === 'brand' || path === 'shop-by-brand') {
+        setSelectedBrand(null);
         setActiveTab('brands');
-      } else if (segments[0] === 'brands' && segments[1]) {
-        const br = brandsData.find(b => b.slug === segments[1]);
+      } else if ((segments[0] === 'brands' || segments[0] === 'brand') && segments[1]) {
+        const brandSlug = segments[1];
+        const br = findBrand(brandSlug);
         if (br) {
           setSelectedBrand(br);
           setActiveTab('brand-detail');
         } else {
-          setActiveTab('brands');
+          setSelectedBrand(null);
+          setActiveTab(`brands/${brandSlug}`);
         }
       } else if (path === 'shop-by-concern' || path === 'concerns') {
         setSelectedConcernSlug(null);
@@ -104,6 +137,9 @@ export default function App() {
       } else if (path === 'services') {
         setActiveTab('painting-services-in-alwar');
       } else if (path === 'legal-disclaimer' || path === 'legal-privacy' || path === 'legal-terms') {
+        setActiveTab(path);
+      } else {
+        // Retain unhandled path for fallback page or subroute
         setActiveTab(path);
       }
     };
@@ -151,15 +187,16 @@ export default function App() {
 
   const handleSelectBrand = (brandOrSlug: Brand | string) => {
     if (typeof brandOrSlug === 'string') {
-      const found = brandsData.find((b) => b.slug === brandOrSlug);
+      const found = findBrand(brandOrSlug);
       if (found) {
         setSelectedBrand(found);
         setActiveTab('brand-detail');
         window.history.pushState(null, '', `/brands/${found.slug}`);
       } else {
-        setSelectedBrandFilter(brandOrSlug);
-        setActiveTab('brands');
-        window.history.pushState(null, '', '/brands');
+        const cleanSlug = brandOrSlug.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        setSelectedBrand(null);
+        setActiveTab(`brands/${cleanSlug}`);
+        window.history.pushState(null, '', `/brands/${cleanSlug}`);
       }
     } else {
       setSelectedBrand(brandOrSlug);
@@ -271,6 +308,7 @@ export default function App() {
                 onBack={() => handleNavigate('products')}
                 onSelectProduct={handleSelectProduct}
                 onOpenEnquiry={(prodName) => handleOpenEnquiry(prodName ? `Inquiry regarding: ${prodName}` : undefined)}
+                onSelectBrand={handleSelectBrand}
               />
             );
           })()
@@ -284,17 +322,28 @@ export default function App() {
           />
         )}
 
-        {/* DEDICATED BRAND DETAIL PAGE */}
-        {(activeTab === 'brand-detail' || activeTab.startsWith('brands/')) && (
+        {/* DEDICATED BRAND DETAIL PAGE OR BRAND NOT FOUND VIEW */}
+        {(activeTab === 'brand-detail' || activeTab.startsWith('brands/') || activeTab.startsWith('brand/')) && (
           (() => {
-            const slug = activeTab.startsWith('brands/') ? activeTab.replace('brands/', '') : selectedBrand?.slug;
-            const currentBrand = (slug ? brandsData.find(b => b.slug === slug) : null) || selectedBrand;
-            if (!currentBrand) return (
-              <BrandsPage
-                onSelectBrand={handleSelectBrand}
-                onOpenEnquiry={(brandName) => handleOpenEnquiry(brandName ? `Quote for: ${brandName}` : undefined)}
-              />
-            );
+            const rawSlug = activeTab.startsWith('brands/')
+              ? activeTab.replace('brands/', '')
+              : activeTab.startsWith('brand/')
+              ? activeTab.replace('brand/', '')
+              : selectedBrand?.slug || '';
+
+            const currentBrand = selectedBrand || (rawSlug ? findBrand(rawSlug) : undefined);
+
+            if (!currentBrand) {
+              return (
+                <BrandNotFoundView
+                  requestedSlug={rawSlug}
+                  onNavigate={handleNavigate}
+                  onSelectBrand={handleSelectBrand}
+                  onOpenEnquiry={(note) => handleOpenEnquiry(note)}
+                />
+              );
+            }
+
             return (
               <BrandDetailPage
                 brand={currentBrand}
@@ -467,6 +516,33 @@ export default function App() {
             )}
           </div>
         )}
+
+        {/* CATCH-ALL ROUTE FALLBACK (404) */}
+        {![
+          'home',
+          'about',
+          'products',
+          'product-detail',
+          'brands',
+          'brand-detail',
+          'shop-by-concern',
+          'painting-services-in-alwar',
+          'waterproofing-services-in-alwar',
+          'blogs',
+          'contact',
+          'projects',
+          'legal-disclaimer',
+          'legal-privacy',
+          'legal-terms',
+        ].includes(activeTab) &&
+          !activeTab.startsWith('products/') &&
+          !activeTab.startsWith('product/') &&
+          !activeTab.startsWith('brands/') &&
+          !activeTab.startsWith('brand/') &&
+          !activeTab.startsWith('concerns') &&
+          !activeTab.startsWith('blogs/') && (
+            <NotFoundPage onNavigate={handleNavigate} />
+          )}
       </main>
 
       {/* FOOTER */}
@@ -475,6 +551,7 @@ export default function App() {
         onOpenCalculator={handleOpenCalculator}
         onOpenEnquiry={() => handleOpenEnquiry()}
         onSelectCategory={handleSelectCategory}
+        onSelectBrand={handleSelectBrand}
       />
 
       {/* FLOATING ACTION BUTTONS */}

@@ -58,6 +58,9 @@ export const Navbar: React.FC<NavbarProps> = ({
     { slug: 'asian-paints', name: 'Asian Paints', desc: 'Apex Ultima, Royale, SmartCare authorized' },
     { slug: 'berger-paints', name: 'Berger Paints', desc: 'Silk Glamor, WeatherCoat Long Life 10' },
     { slug: 'nerolac', name: 'Nerolac Paints', desc: 'Beauty Gold, Excel Mica Marble & Enamels' },
+    { slug: 'nippon-paint', name: 'Nippon Paint', desc: 'Spot-less, Weatherbond & Momento' },
+    { slug: 'birla-opus', name: 'Birla Opus', desc: 'One Decor, Calista & Prime luxury' },
+    { slug: 'pidilite', name: 'Pidilite / Dr. Fixit', desc: 'Fevicol, Dr. Fixit waterproofing & M-Seal' },
     { slug: 'all', name: 'All 24+ Brands', desc: 'Explore all authorized paint & chemical partners' },
   ];
 
@@ -264,7 +267,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={() => handleNavigate('brands')}
               className={`px-3 py-1.5 text-[13px] font-bold tracking-tight rounded-lg transition-colors inline-flex items-center gap-1 ${
-                activeTab.startsWith('brands')
+                activeTab.startsWith('brand') || activeTab === 'shop-by-brand'
                   ? 'text-[#ef3479] bg-rose-50/80'
                   : 'text-slate-700 hover:text-black hover:bg-slate-100/70'
               }`}

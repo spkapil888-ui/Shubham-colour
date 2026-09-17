@@ -838,10 +838,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             <BrandCard
               key={brand.slug}
               brand={brand}
-              onSelect={(b) => {
-                onSelectBrand(b);
-                onNavigate('brands');
-              }}
+              onSelect={(b) => onSelectBrand(b)}
             />
           ))}
         </div>
