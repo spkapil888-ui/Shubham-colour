@@ -329,7 +329,7 @@ export function getPageSEO(
       return {
         title: 'Contact Us & Showroom Location | Shubham Colour House Alwar',
         description:
-          'Visit our showroom at Plot No. 43, Vijay Complex, Near Bhagat Singh Circle, Scheme No. 2, Alwar. Call +91 94140 17918 for computerized tinting, shade cards, or contractor quotes.',
+          'Visit our showroom at Plot No. 43, Vijay Complex, Near Bhagat Singh Circle, Scheme No. 2, Alwar. Call +91 63673 34283 for computerized tinting, shade cards, or contractor quotes.',
         keywords:
           'contact Shubham Colour House, paint shop near Bhagat Singh Circle, Alwar paint store phone number, paint shop address Alwar, Vijay Complex Alwar',
         canonicalUrl: `${BASE_URL}/#contact`,

@@ -419,7 +419,7 @@ export const PaintingServicesInAlwarPage: React.FC<PaintingServicesPageProps> = 
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                   <a
-                    href={`tel:${companyData.phonePrimary}`}
+                    href={`tel:${companyData.phoneTel}`}
                     className="text-[11px] font-semibold text-slate-500 hover:text-black"
                   >
                     Call: {companyData.phoneDisplay}
@@ -520,7 +520,7 @@ export const PaintingServicesInAlwarPage: React.FC<PaintingServicesPageProps> = 
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <a
-              href={`tel:${companyData.phonePrimary}`}
+              href={`tel:${companyData.phoneTel}`}
               className="btn-primary text-xs tracking-wider uppercase py-3.5 px-6 flex items-center gap-2"
             >
               <Phone className="w-4 h-4" />

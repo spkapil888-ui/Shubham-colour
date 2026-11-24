@@ -86,7 +86,7 @@ export const QuickEnquiryModal: React.FC<QuickEnquiryModalProps> = ({
             </p>
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
-                href={`tel:${companyData.phonePrimary}`}
+                href={`tel:${companyData.phoneTel}`}
                 className="btn-secondary py-3 px-6 text-xs"
               >
                 <Phone className="w-4 h-4 text-[#ef3479]" />
@@ -127,7 +127,7 @@ export const QuickEnquiryModal: React.FC<QuickEnquiryModalProps> = ({
                 <input
                   type="tel"
                   required
-                  placeholder="e.g. 9414017918"
+                  placeholder="e.g. 98XXXXXXXX"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className="sch-input"

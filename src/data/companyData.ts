@@ -8,12 +8,14 @@ export const companyData = {
   subheading: "Alwar's Premier Destination for Architectural Coatings, Italian Wood Finishes, Waterproofing & Surface Chemistry.",
   
   // Contacts
-  phonePrimary: '+91 94140 17918',
-  phoneDisplay: '+91 94140 17918 / +91 80438 84623',
-  phoneRaw: '919414017918',
-  phoneSecondary: '+91 80438 84623',
-  whatsappNumber: '919414017918',
-  whatsappDisplay: '+91 94140 17918',
+  phonePrimary: '+91 63673 34283',
+  phoneTel: '+916367334283',
+  phoneDisplay: '+91 63673 34283',
+  phoneRaw: '916367334283',
+  whatsappNumber: '916367334283',
+  whatsappDisplay: '+91 63673 34283',
+  whatsappEnquiryMessage: 'Hi Shubham Colour House, please share available paint shades and prices.',
+  whatsappLink: 'https://wa.me/916367334283?text=Hi%20Shubham%20Colour%20House%2C%20please%20share%20available%20paint%20shades%20and%20prices.',
   email: 'info@shubhamcolourhouse.com',
   emailSecondary: 'support@shubhamcolourhouse.com',
   

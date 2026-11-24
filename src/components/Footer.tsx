@@ -203,7 +203,7 @@ export const Footer: React.FC<FooterProps> = ({
               <div className="flex items-center gap-3 flex-wrap">
                 <a
                   id="footer-social-whatsapp"
-                  href={`https://wa.me/${companyData.whatsappNumber}?text=Hello%20Shubham%20Colour%20House,%20I%20would%20like%20to%20inquire%20about%20paints%20and%20color%20consultation.`}
+                  href={companyData.whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="WhatsApp"
@@ -214,7 +214,7 @@ export const Footer: React.FC<FooterProps> = ({
 
                 <a
                   id="footer-social-phone"
-                  href={`tel:${companyData.phonePrimary}`}
+                  href={`tel:${companyData.phoneTel}`}
                   aria-label="Call Store"
                   className="w-10 h-10 rounded-full bg-white border border-blue-200 text-[#3B82F6] hover:bg-[#3B82F6] hover:text-white flex items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300"
                 >
@@ -370,7 +370,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <div className="text-xs">
                   <span className="text-[#6B7280] block text-[11px] font-semibold">Direct Call Desk</span>
                   <a 
-                    href={`tel:${companyData.phonePrimary}`} 
+                    href={`tel:${companyData.phoneTel}`} 
                     className="font-extrabold text-[#16181D] hover:text-[#3B82F6] transition-colors"
                   >
                     {companyData.phoneDisplay}
@@ -386,7 +386,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <div className="text-xs">
                   <span className="text-[#6B7280] block text-[11px] font-semibold">Instant WhatsApp Consultation</span>
                   <a 
-                    href={`https://wa.me/${companyData.whatsappNumber}`}
+                    href={companyData.whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-extrabold text-[#16181D] hover:text-emerald-600 transition-colors"

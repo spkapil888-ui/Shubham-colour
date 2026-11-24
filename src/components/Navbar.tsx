@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { 
+  MessageCircle,
   Menu, 
   X, 
   ChevronDown, 
@@ -18,6 +19,7 @@ import {
   CheckCircle2,
   ChevronRight
 } from 'lucide-react';
+import { companyData } from '../data/companyData';
 import { ShubhamLogo } from './ShubhamLogo';
 import { CategoryId } from '../types';
 
@@ -578,6 +580,27 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           <div className="pt-3 border-t border-slate-100 space-y-2">
+            <div className="grid grid-cols-2 gap-2">
+              <a
+                href={`tel:${companyData.phoneTel}`}
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-slate-900 text-white text-xs font-bold"
+              >
+                <Phone className="w-3.5 h-3.5" />
+                <span>Call Now</span>
+              </a>
+              <a
+                href={companyData.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-[#25D366] text-white text-xs font-bold"
+              >
+                <MessageCircle className="w-3.5 h-3.5" />
+                <span>Chat on WhatsApp</span>
+              </a>
+            </div>
+            <p className="text-center text-[11px] font-semibold text-slate-500">{companyData.phoneDisplay}</p>
             <button
               onClick={() => {
                 onOpenCalculator();

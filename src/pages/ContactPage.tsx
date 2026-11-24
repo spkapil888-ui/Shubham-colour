@@ -87,7 +87,7 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
                   <Phone className="w-4 h-4 text-[#27a9ef] flex-shrink-0" />
                   <div>
                     <span className="text-[11px] text-[#a1a1a1] block font-bold">Call Us</span>
-                    <a href={`tel:${companyData.phonePrimary}`} className="font-bold text-[#191919] hover:text-[#ef3479]">
+                    <a href={`tel:${companyData.phoneTel}`} className="font-bold text-[#191919] hover:text-[#ef3479]">
                       {companyData.phoneDisplay}
                     </a>
                   </div>
@@ -98,7 +98,7 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
                   <div>
                     <span className="text-[11px] text-[#a1a1a1] block font-bold">WhatsApp Direct</span>
                     <a
-                      href={`https://wa.me/${companyData.whatsappNumber}`}
+                      href={companyData.whatsappLink}
                       target="_blank"
                       rel="noreferrer"
                       className="font-bold text-emerald-700 hover:underline"
@@ -125,6 +125,25 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
                     <span className="font-bold text-[#191919]">Mon – Sun: 9:00 AM – 8:30 PM (All 7 Days)</span>
                   </div>
                 </div>
+              </div>
+
+              <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3">
+                <a
+                  href={`tel:${companyData.phoneTel}`}
+                  className="btn-secondary !px-4 text-xs tracking-[0.12em] w-full flex items-center justify-center gap-2"
+                >
+                  <Phone className="w-4 h-4" />
+                  <span>CALL NOW</span>
+                </a>
+                <a
+                  href={companyData.whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center gap-2 rounded-full bg-[#25D366] hover:bg-[#1ebe5b] text-white text-xs font-extrabold tracking-[0.12em] px-4 py-4 transition-colors shadow-sm"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>CHAT ON WHATSAPP</span>
+                </a>
               </div>
 
               <div className="pt-2">
@@ -197,7 +216,7 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
                   <input
                     type="tel"
                     required
-                    placeholder="e.g. 94140 XXXXX"
+                    placeholder="e.g. 98XXX XXXXX"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="sch-input"

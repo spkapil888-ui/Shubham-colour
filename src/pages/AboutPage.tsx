@@ -372,7 +372,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
             GET STORE DIRECTIONS
           </button>
           <a
-            href={`tel:${companyData.phonePrimary}`}
+            href={`tel:${companyData.phoneTel}`}
             className="btn-secondary text-xs tracking-[0.12em]"
           >
             CALL {companyData.phonePrimary}

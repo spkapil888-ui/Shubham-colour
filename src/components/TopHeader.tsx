@@ -13,33 +13,31 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
   onOpenEnquiry,
   onNavigate
 }) => {
-  const handleWhatsAppClick = () => {
-    const text = encodeURIComponent('Hello Shubham Colour House! I need product rates and consultation regarding paints/waterproofing in Alwar.');
-    window.open(`https://wa.me/${companyData.whatsappNumber}?text=${text}`, '_blank');
-  };
-
   return (
     <div className="w-full bg-[#0f141d] text-slate-300 text-[11px] py-1 px-3 sm:px-6 border-b border-slate-800/80">
       <div className="max-w-[1540px] mx-auto flex items-center justify-between gap-3 text-[11px]">
         {/* Left: Contact Info */}
         <div className="flex items-center gap-3 sm:gap-4 truncate">
           <a
-            href={`tel:${companyData.phonePrimary}`}
+            href={`tel:${companyData.phoneTel}`}
             className="flex items-center gap-1.5 text-slate-200 hover:text-white transition-colors flex-shrink-0"
-            title="Call Showroom"
+            title="Call Now"
           >
             <Phone className="w-3 h-3 text-[#ff761c]" />
             <span className="font-semibold tracking-tight">{companyData.phonePrimary}</span>
           </a>
 
-          <button
-            onClick={handleWhatsAppClick}
+          <a
+            href={companyData.whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-1 text-emerald-400 hover:text-emerald-300 transition-colors flex-shrink-0 font-medium"
-            title="WhatsApp Support"
+            title="Chat on WhatsApp"
+            aria-label="Chat on WhatsApp"
           >
             <MessageCircle className="w-3 h-3 fill-current" />
-            <span className="hidden xs:inline">WhatsApp</span>
-          </button>
+            <span className="hidden sm:inline">Chat on WhatsApp</span>
+          </a>
 
           <span className="hidden md:inline text-slate-700">|</span>
 
