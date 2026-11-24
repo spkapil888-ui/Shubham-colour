@@ -102,7 +102,7 @@ export const BrandNotFoundView: React.FC<BrandNotFoundViewProps> = ({
           </button>
 
           <a
-            href={`tel:${companyData.phonePrimary}`}
+            href={`tel:${companyData.phoneTel}`}
             className="btn-secondary text-xs tracking-wider uppercase px-5 py-3 flex items-center gap-2"
           >
             <Phone className="w-4 h-4 text-[#ef3479]" />

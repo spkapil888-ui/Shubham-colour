@@ -24,11 +24,6 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleWhatsApp = () => {
-    const text = 'Hello Shubham Colour House! I am looking for paint and surface solutions in Alwar.';
-    window.open(`https://wa.me/${companyData.whatsappNumber}?text=${encodeURIComponent(text)}`, '_blank');
-  };
-
   return (
     <>
       {/* DESKTOP & TABLET FLOATING WHATSAPP & SCROLL TOP */}
@@ -43,8 +38,11 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
           </button>
         )}
 
-        <button
-          onClick={handleWhatsApp}
+        <a
+          href={companyData.whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
           className="group flex items-center gap-3 px-5 py-3.5 rounded-full bg-[#191919] hover:bg-black text-white shadow-2xl transition-all duration-300 hover:scale-105 border border-white/10"
         >
           <div className="relative">
@@ -52,34 +50,40 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
             <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-[#ef3479] rounded-full animate-ping"></span>
           </div>
           <span className="text-xs font-extrabold uppercase tracking-wider">
-            WhatsApp Helpdesk
+            Chat on WhatsApp
           </span>
-        </button>
+        </a>
       </div>
 
+      {/* Spacer so the fixed mobile bar never covers forms or footer content */}
+      <div className="sm:hidden h-[calc(4.25rem+env(safe-area-inset-bottom))]" aria-hidden="true" />
+
       {/* MOBILE BOTTOM ACTION BAR */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 sm:hidden bg-white/95 backdrop-blur-md border-t border-slate-200 py-2.5 px-4 flex items-center justify-around shadow-2xl">
+      <div className="fixed bottom-0 left-0 right-0 z-40 sm:hidden bg-white/95 backdrop-blur-md border-t border-slate-200 pt-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom))] px-4 flex items-center justify-around shadow-2xl">
         {/* Call */}
         <a
-          href={`tel:${companyData.phonePrimary}`}
+          href={`tel:${companyData.phoneTel}`}
           className="flex flex-col items-center gap-1 text-[#777] hover:text-[#191919] text-[10px] font-bold"
         >
           <div className="w-8 h-8 rounded-full bg-slate-100 text-[#191919] flex items-center justify-center">
             <Phone className="w-4 h-4" />
           </div>
-          <span>Call</span>
+          <span>Call Now</span>
         </a>
 
         {/* WhatsApp */}
-        <button
-          onClick={handleWhatsApp}
-          className="flex flex-col items-center gap-1 text-[#777] hover:text-[#191919] text-[10px] font-bold"
+        <a
+          href={companyData.whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
+          className="flex flex-col items-center gap-1 text-emerald-700 hover:text-emerald-800 text-[10px] font-bold"
         >
-          <div className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-sm">
             <MessageCircle className="w-4 h-4" />
           </div>
           <span>WhatsApp</span>
-        </button>
+        </a>
 
         {/* Calculator */}
         <button

@@ -527,7 +527,7 @@ export const WaterproofingServicesInAlwarPage: React.FC<WaterproofingServicesPag
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <a
-              href={`tel:${companyData.phonePrimary}`}
+              href={`tel:${companyData.phoneTel}`}
               className="btn-primary text-xs tracking-wider uppercase py-3.5 px-6 flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700"
             >
               <Phone className="w-4 h-4" />

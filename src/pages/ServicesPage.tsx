@@ -306,7 +306,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
                 <Phone className="w-4 h-4 text-[#ef3479] flex-shrink-0" />
                 <div>
                   <span className="text-[#a1a1a1] block text-[10px] uppercase font-bold">Call Directly</span>
-                  <a href={`tel:${companyData.phonePrimary}`} className="font-bold text-[#191919] hover:underline">
+                  <a href={`tel:${companyData.phoneTel}`} className="font-bold text-[#191919] hover:underline">
                     {companyData.phonePrimary}
                   </a>
                 </div>
@@ -317,7 +317,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
                 <div>
                   <span className="text-[#a1a1a1] block text-[10px] uppercase font-bold">WhatsApp Direct</span>
                   <a
-                    href={`https://wa.me/${companyData.whatsappNumber}`}
+                    href={companyData.whatsappLink}
                     target="_blank"
                     rel="noreferrer"
                     className="font-bold text-emerald-700 hover:underline"
@@ -384,7 +384,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
                   <input
                     type="tel"
                     required
-                    placeholder="e.g. 94140 XXXXX"
+                    placeholder="e.g. 98XXX XXXXX"
                     value={bookingForm.phone}
                     onChange={(e) => setBookingForm({ ...bookingForm, phone: e.target.value })}
                     className="sch-input"
